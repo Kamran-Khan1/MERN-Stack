@@ -15,3 +15,6 @@ console.log(filePath);
 
 const params = new URLSearchParams(urlObj.search);
 console.log(params.get("q")); // this is not a proper object we need to get the data from the key
+params.append("limit", "5"); // we can append params to our url
+params.delete("limit"); // we can also delete the prams with their key's
+console.log(params);
