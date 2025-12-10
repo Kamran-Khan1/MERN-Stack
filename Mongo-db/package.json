@@ -1,0 +1,20 @@
+{
+  "name": "mongo-db",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [
+    "mongodb"
+  ],
+  "license": "ISC",
+  "author": "Kamran Khan",
+  "type": "module",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node main.js"
+  },
+  "dependencies": {
+    "mongodb": "^7.0.0"
+  },
+  "devDependencies": {}
+}
