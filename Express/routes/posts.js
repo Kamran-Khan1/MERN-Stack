@@ -18,11 +18,13 @@ routes.get("/", (req, res) => {
 });
 
 //getting the user with id
-routes.get("/:id", (req, res) => {
+routes.get("/:id", (req, res, next) => {
   const id = parseInt(req.params.id);
   const post = posts.find((post) => post.id === id);
   if (!post) {
-    return res.status(404).json({ msg: `User with id: ${id} not found❗` });
+    const error = new Error(`User with id: ${id} not found`);
+    error.status = 404;
+    next(error);
   }
   res.status(200).json(post);
 });
@@ -35,7 +37,9 @@ routes.post("/", (req, res) => {
     title: title,
   };
   if (!title) {
-    return res.status(400).json({ msg: "You must have to put title" });
+    const error = new Error(`You must have to put title`);
+    error.status = 400;
+    next(error);
   }
   posts.push(post);
   res.status(201).json(posts);
@@ -47,10 +51,14 @@ routes.put("/:id", (req, res) => {
   const post = posts.find((post) => post.id === id);
   const title = req.body.title;
   if (!post) {
-    return res.status(404).json({ msg: `The user with id: ${id} not found` });
+    const error = new Error(`User with id: ${id} not found`);
+    error.status = 404;
+    next(error);
   }
   if (!title) {
-    return res.status(400).json({ msg: "You must have to put title" });
+    const error = new Error(`You must have to put title`);
+    error.status = 400;
+    next(error);
   }
   post.title = title;
   res.status(200).json(posts);
@@ -62,7 +70,9 @@ routes.delete("/:id", (req, res) => {
   const id = parseInt(req.params.id);
   const post = posts.find((post) => post.id === id);
   if (!post) {
-    return res.status(404).json({ msg: "user not found" });
+    const error = new Error(`User with id: ${id} not found`);
+    error.status = 404;
+    next(error);
   }
   let updatedPosts = posts.filter((post) => post.id !== id);
   posts = updatedPosts;
