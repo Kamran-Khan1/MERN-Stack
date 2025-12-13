@@ -1,0 +1,9 @@
+.beautify {
+  background-color: black;
+  color: white;
+  padding: 10px;
+  border: 2px solid red;
+  width: 200px;
+  margin: 10px;
+  font-family: cursive;
+}

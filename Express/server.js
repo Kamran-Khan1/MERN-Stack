@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(logger);
 
 //create a static folder-> this is a middleware
-// app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "public")));
 app.use("/api/posts", posts);
 //error handling
 app.use(notFoundHandler); //The order of middleware matters

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome</title>
+  </head>
+  <body>
+    <%- include("header.ejs") %>
+    <h1><%= message %></h1>
+    <h2><%= time %></h2>
+    <ul>
+      <% peoples.forEach(people => { //I can write littraly JS in html%>
+      <li><%= people %></li>
+      <% }); %>
+    </ul>
+    <%- include("footer.ejs") %>
+  </body>
+</html>
