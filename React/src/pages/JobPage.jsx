@@ -23,7 +23,7 @@ const JobPage = ({ deleteJob }) => {
     };
 
     fetchJob();
-  });
+  }, [param.id]);
 
   const deleteHandler = () => {
     const confirm = window.confirm("Are you sure you want to proceed?");

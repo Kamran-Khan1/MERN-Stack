@@ -17,6 +17,7 @@ const EditJob = ({ updateJobSubmit }) => {
   const [salary, setSalary] = useState("");
   const [location, setLocation] = useState("");
   const [company, setCompany] = useState({
+    name: "",
     description: "",
     contactEmail: "",
     contactPhone: "",
@@ -49,7 +50,7 @@ const EditJob = ({ updateJobSubmit }) => {
       }
     };
     fetchJob();
-  }, []);
+  }, [param.id]);
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -62,7 +63,7 @@ const EditJob = ({ updateJobSubmit }) => {
       location,
       salary,
       company: {
-        name: company,
+        name: company.name,
         description: companyDescription,
         contactEmail,
         contactPhone,
@@ -196,7 +197,7 @@ const EditJob = ({ updateJobSubmit }) => {
                 name="company"
                 className="border rounded w-full py-2 px-3"
                 placeholder="Company Name"
-                value={company}
+                value={company.name}
                 onChange={(e) => setCompany(e.target.value)}
               />
             </div>
